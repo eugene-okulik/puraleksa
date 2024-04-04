@@ -1,8 +1,7 @@
-# Цифра, которую нужно угадать
 secret_number = 5
 
 while True:
-    guess = int(input("Угадайте цифру: ")) # Пользователь вводит цифру
+    guess = int(input("Угадайте цифру: "))
 
     # Проверка угадана ли цифра
     if guess == secret_number:

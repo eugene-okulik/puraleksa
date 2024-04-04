@@ -1,4 +1,4 @@
-#с использованием метода index
+# с использованием метода index
 results = [
     "результат операции: 42",
     "результат операции: 54",
@@ -14,7 +14,7 @@ for result in results:
 print()
 print()
 
-#с использованием метода split()
+# с использованием метода split()
 results = [
     "результат операции: 42",
     "результат операции: 54",
@@ -26,4 +26,3 @@ for result in results:
     number_str = result.split(":")[-1].strip()
     number = int(number_str)
     print(number + 10)
-
