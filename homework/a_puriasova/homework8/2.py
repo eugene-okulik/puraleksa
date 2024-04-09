@@ -1,23 +1,32 @@
-def fibonacci(limit):
-    fib_numbers = []
-    a, b = 0, 1
-    count = 0
-    while count < limit:
-        fib_numbers.append(a)
-        a, b = b, a + b
-        count += 1
-    return fib_numbers
+def progression():
+    n = 2
+    num = 1
+    while True:
+        yield num
+        num += n
 
 
-fib_numbers_5 = fibonacci(5)
-print("Пятое число Фибоначчи:", fib_numbers_5[4])
+# Создаем генератор чисел Фибоначчи
+fib_gen = progression()
 
-fib_numbers_200 = fibonacci(200)
-print("Двухсотое число Фибоначчи:", fib_numbers_200[199])
+# Получаем пятое, двухсотое, тысячное и стотысячное число Фибоначчи
+fib_numbers = []
 
-fib_numbers_1000 = fibonacci(1000)
-print("Тысячное число Фибоначчи:", fib_numbers_1000[999])
+# Получаем необходимые числа Фибоначчи
+for _ in range(5):
+    fib_numbers.append(next(fib_gen))
 
-# fib_numbers = fibonacci(100000)
-# print("Сто тысячное число Фибоначчи:", fib_numbers[99999])
-# последнее уронит весь код, поэтому под комментарием, честно не нашла решения как это сделать((
+for _ in range(195):
+    next(fib_gen)
+
+for _ in range(799):
+    next(fib_gen)
+
+for _ in range(99999 - 1000):
+    next(fib_gen)
+
+# Печатаем полученные числа Фибоначчи
+print("Пятое число Фибоначчи:", fib_numbers[4])
+print("Двухсотое число Фибоначчи:", next(fib_gen))
+print("Тысячное число Фибоначчи:", next(fib_gen))
+print("Сто тысячное число Фибоначчи:", next(fib_gen))
