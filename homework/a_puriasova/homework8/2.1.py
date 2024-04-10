@@ -1,10 +1,12 @@
 from decimal import Decimal
 
+
 def fibonacci():
     a, b = Decimal(0), Decimal(1)
     while True:
         yield a
         a, b = b, a + b
+
 
 # Создаем генератор чисел Фибоначчи
 fib_gen = fibonacci()
@@ -28,4 +30,3 @@ fib_1000 = next(fib_gen)
 print("Пятое число Фибоначчи:", fib_5)
 print("Двухсотое число Фибоначчи:", fib_200)
 print("Тысячное число Фибоначчи:", fib_1000)
-
