@@ -7,7 +7,6 @@ def test_one(page: Page):
     press_authentication.click()
     field1 = page.get_by_role('textbox', name="username")
     field1.fill("Aleksa")
-    # в доке не нашлось роли для input type=password, опэтому использую label
-    field2 = page.get_by_label("Password")
+    field2 = page.get_by_role("textbox", name="Password")
     field2.fill("12345")
     page.get_by_role("button", name=" Login").click()

@@ -9,7 +9,7 @@ def test_example(page: Page) -> None:
     page.get_by_placeholder("Last Name").fill("Pur")
     page.get_by_placeholder("name@example.com").fill("name@ex.com")
     page.get_by_text("Female").click()
-    page.get_by_placeholder("Mobile Number").fill("111330633")
+    page.get_by_placeholder("Mobile Number").fill("1113306331")
     page.locator("#dateOfBirthInput").click()
     page.get_by_label("Previous Month").click()
     page.get_by_label("Previous Month").click()
@@ -21,10 +21,10 @@ def test_example(page: Page) -> None:
     page.get_by_text("Music").check()
     page.get_by_placeholder("Current Address").fill("text text text")
     page.locator("#state svg").click()
-    # это написала с кодогеном потому что так было удобнее, сама бы не догадалась поставить exact=True
-    # если это можно было сделать по другому - напиши пожалуйста
     page.get_by_text("NCR", exact=True).click()
     page.locator("#city svg").click()
     page.get_by_text("Gurgaon", exact=True).click()
     page.get_by_role("button", name="Submit").click()
+    # он не может выполнить это действие - там реклама перекрывает, не получается ее закрыть
+    # page.get_by_role("button", name="Close").click()
     sleep(5)
