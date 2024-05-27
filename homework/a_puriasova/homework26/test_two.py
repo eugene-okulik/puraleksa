@@ -3,6 +3,8 @@ from playwright.sync_api import Page
 
 
 def test_example(page: Page) -> None:
+    page.set_viewport_size({"width": 1200, "height": 800})
+
     page.goto("https://demoqa.com/automation-practice-form")
     sleep(3)
     page.get_by_placeholder("First Name").fill("Aleksa")
@@ -27,4 +29,5 @@ def test_example(page: Page) -> None:
     page.get_by_role("button", name="Submit").click()
     # он не может выполнить это действие - там реклама перекрывает, не получается ее закрыть
     # page.get_by_role("button", name="Close").click()
+    page.evaluate('document.querySelector("#closeLargeModal").click()')
     sleep(5)
