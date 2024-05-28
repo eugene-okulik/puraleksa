@@ -3,10 +3,7 @@ from playwright.sync_api import Page
 
 
 def test_example(page: Page) -> None:
-    page.set_viewport_size({"width": 1200, "height": 800})
-
     page.goto("https://demoqa.com/automation-practice-form")
-    sleep(3)
     page.get_by_placeholder("First Name").fill("Aleksa")
     page.get_by_placeholder("Last Name").fill("Pur")
     page.get_by_placeholder("name@example.com").fill("name@ex.com")
@@ -18,7 +15,11 @@ def test_example(page: Page) -> None:
     page.get_by_label("Previous Month").click()
     page.get_by_role("combobox").nth(1).select_option("2004")
     page.get_by_label("Choose Tuesday, February 10th,").click()
-    page.locator("#subjectsInput").fill("hgjkhkj")
+    page.locator("#subjectsInput").fill("m")
+    page.get_by_text("Maths", exact=True).click()
+    page.locator("#subjectsContainer div").filter(has_text="Maths").nth(1).click()
+    page.locator("#subjectsInput").fill("a")
+    page.get_by_text("Arts", exact=True).click()
     page.get_by_text("Sports").check()
     page.get_by_text("Music").check()
     page.get_by_placeholder("Current Address").fill("text text text")
@@ -26,6 +27,8 @@ def test_example(page: Page) -> None:
     page.get_by_text("NCR", exact=True).click()
     page.locator("#city svg").click()
     page.get_by_text("Gurgaon", exact=True).click()
+    # чтобы посмотреть, что все заполнилось
+    sleep(5)
     page.get_by_role("button", name="Submit").click()
     # он не может выполнить это действие - там реклама перекрывает, не получается ее закрыть
     # page.get_by_role("button", name="Close").click()
